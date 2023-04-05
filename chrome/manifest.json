@@ -1,0 +1,38 @@
+{
+  "name": "easyOA",
+  "description": "1. PDF back to abstract page; 2. Rename PDF page title;",
+  "version": "0.1",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Click to abstract!"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://arxiv.org/*",
+        "https://openreview.net/*",
+        "https://proceedings.mlr.press/*",
+        "https://papers.nips.cc/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://arxiv.org/*",
+    "https://export.arxiv.org/*",
+    "https://openreview.net/*",
+    "https://api.openreview.net/*",
+    "https://aclanthology.org/*",
+    "https://openaccess.thecvf.com/content/*",
+    "https://proceedings.mlr.press/*",
+    "https://papers.nips.cc/*"
+  ]
+}
