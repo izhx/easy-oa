@@ -1,6 +1,6 @@
 <p align="center">
   <picture>
-    <img alt="Hugging Face Transformers Library" src="resources/assets/easyoa-128.png" width="48" height="48" style="max-width: 100%;">
+    <img alt="EasyOA Logo" src="resources/assets/easyoa-128.png" width="48" height="48" style="max-width: 100%;">
   </picture>
   <br/>
 </p>
@@ -15,6 +15,14 @@
 Reading papers every day, I often receive various PDF links, which can be quite overwhelming. To meet my own needs, I developed the `EasyOA` plugin, which can:
 1. Rename PDF pages with the paper title for easier tab management and searching, make your browser history and [OneTab](https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall) page clean.
 2. Return to the abstract page with a single click on the icon, eliminating the need for manually modifying the URL.
+
+
+<p align="center">
+  <picture>
+    <img alt="English Demo" src="https://user-images.githubusercontent.com/26690193/230275829-f3655b7b-8676-4c85-87af-7f8113f394c4.png" style="max-width: 100%;">
+  </picture>
+  <br/>
+</p>
 
 
 目前支持的OA网站有 / Currently supported OA websites:
