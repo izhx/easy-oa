@@ -1,6 +1,5 @@
 // Add the back to abstract button.
 
-const arxivIdRegex = /\/(\d{4}\.\d{4,5})/;
 const mlrPressRegex = /\/[^\/]+$/;
 let tabTitles = {};
 
@@ -66,7 +65,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 // Remove the saved title when the tab is closed.
 chrome.tabs.onRemoved.addListener((tabId, removeInfo) => {
-  delete tabTitles[tabId];
+  if (isPdf(tab.url)) delete tabTitles[tabId];
 });
 
 

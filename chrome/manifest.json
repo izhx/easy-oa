@@ -1,13 +1,23 @@
 {
-  "name": "easyOA",
-  "description": "1. PDF back to abstract page; 2. Rename PDF page title;",
+  "name": "EasyOA",
+  "description": "1. PDF back to abstract page; 2. Rename PDF page with paper title;",
   "version": "0.1",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "Click to abstract!"
+    "default_title": "Click to abstract!",
+    "icons": {
+      "16": "assets/easyoa-16.png",
+      "48": "assets/easyoa-48.png",
+      "128": "assets/easyoa-128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/easyoa-16.png",
+    "48": "assets/easyoa-48.png",
+    "128": "assets/easyoa-128.png"
   },
   "content_scripts": [
     {
