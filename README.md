@@ -1,10 +1,10 @@
-# easyOA
+# EasyOA
 
-每天阅读论文，经常各种pdf链接满天飞，很头疼。根据自己的需求，编写了 `easyOA` 插件，它可以：
+每天阅读论文，经常各种pdf链接满天飞，很头疼。根据自己的需求，编写了 `EasyOA` 插件，它可以：
 1. PDF页面重命名为论文标题，方便标签页管理和搜索，让你的历史记录和 [OneTab](https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall) 页面更清爽；
 2. 单击图标返回摘要页，摆脱手动修改URL。
 
-Reading papers every day, I often receive various PDF links, which can be quite overwhelming. To meet my own needs, I developed the `easyOA` plugin, which can:
+Reading papers every day, I often receive various PDF links, which can be quite overwhelming. To meet my own needs, I developed the `EasyOA` plugin, which can:
 1. Rename PDF pages with the paper title for easier tab management and searching, make your browser history and [OneTab](https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall) page clean.
 2. Return to the abstract page with a single click on the icon, eliminating the need for manually modifying the URL.
 
