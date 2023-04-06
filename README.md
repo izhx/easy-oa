@@ -1,3 +1,11 @@
+<p align="center">
+  <picture>
+    <img alt="Hugging Face Transformers Library" src="resources/assets/easyoa-128.png" width="48" height="48" style="max-width: 100%;">
+  </picture>
+  <br/>
+</p>
+
+
 # EasyOA
 
 每天阅读论文，经常各种pdf链接满天飞，很头疼。根据自己的需求，编写了 `EasyOA` 插件，它可以：
