@@ -42,11 +42,15 @@ Reading papers every day, I often receive various PDF links, which can be quite 
 
 ## 安装 / Install
 
-Chrome 应用商店正在审核中，现在可以在 [release](https://github.com/izhx/easy-oa/releases) 页面下载 `crx文件` 手动安装。
+Chrome 应用商店链接 [EasyOA](https://chrome.google.com/webstore/detail/easyoa/bggnhcjegnfpaepmdfojmfhgocleiohm).
+
+可以在 [release](https://github.com/izhx/easy-oa/releases) 页面下载 `crx文件` 手动安装最新版本。
 
 > 如果要 debug 或者贡献代码，可以下载或克隆到本地，以开发者模式手动安装，参见 [How to install the unpacked extension in Chrome](https://webkul.com/blog/how-to-install-the-unpacked-extension-in-chrome/) (安装时选择本项目下的 `./chrome` 文件夹).
 
-Under Chrome app store reviewing, and now you can download `crx file` from the [release](https://github.com/izhx/easy-oa/releases) page and install manually.
+Chrome app store link [EasyOA](https://chrome.google.com/webstore/detail/easyoa/bggnhcjegnfpaepmdfojmfhgocleiohm).
+
+You can download `crx file` from the [release](https://github.com/izhx/easy-oa/releases) page and install the latest version manually.
 
 > For debugging or contributing, you can clone it to your local machine and install it in developer mode.
 Refer to [How to install the unpacked extension in Chrome](https://webkul.com/blog/how-to-install-the-unpacked-extension-in-chrome/) (select the `./chrome` folder of this repo).
