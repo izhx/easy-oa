@@ -1,6 +1,6 @@
 // Change title when pdf is loaded
 
-const exName = "[easyOA]";
+const exName = "[EasyOA]";
 const parser = new DOMParser();
 const mlrPressRegex = /\/[^\/]+$/;
 
@@ -104,9 +104,18 @@ function getTitle() {
       .replace("/file/", "/hash/")
     ).then((response) => response.text())
       .then((text) => {
-        console.log(text);
         let doc = parser.parseFromString(text, "text/html");
         paperTitle =  doc.getElementsByTagName("title")[0].innerHTML;
+        console.log(exName, "get title:", paperTitle);
+        chrome.runtime.sendMessage({message: "titleLoaded", title: paperTitle});
+      })
+      .catch((error) => console.log(error));
+
+  } else if (url.includes("aclanthology.org/")) {
+    fetch(url.replace(".pdf", "")).then((response) => response.text())
+      .then((text) => {
+        let doc = parser.parseFromString(text, "text/html");
+        paperTitle =  doc.getElementById("title").getElementsByTagName('a')[0].innerHTML;
         console.log(exName, "get title:", paperTitle);
         chrome.runtime.sendMessage({message: "titleLoaded", title: paperTitle});
       })
@@ -122,8 +131,10 @@ function changeTitle(request, sender, sendResponse) {
   if (request.message === 'complete') {
     pageComplete = true;
   } else if (request.message === 'changeTitle' && paperTitle !== null && pageComplete) {
-    console.log(exName, 'set title');
-    insertTitle(paperTitle);
+    // if (document.title !== paperTitle) {
+      console.log(exName, 'set title');
+      insertTitle(paperTitle);
+    // }
   }
 }
 

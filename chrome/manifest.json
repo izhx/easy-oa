@@ -25,15 +25,15 @@
         "https://arxiv.org/*",
         "https://openreview.net/*",
         "https://proceedings.mlr.press/*",
-        "https://papers.nips.cc/*"
+        "https://papers.nips.cc/*",
+        "https://aclanthology.org/*"
       ],
       "js": ["content.js"]
     }
   ],
   "permissions": [
     "tabs",
-    "activeTab",
-    "storage"
+    "activeTab"
   ],
   "host_permissions": [
     "https://arxiv.org/*",
