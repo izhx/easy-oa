@@ -1,5 +1,6 @@
 // Add the back to abstract button.
 
+const exName = "[EasyOA]";
 const mlrPressRegex = /\/[^\/]+$/;
 let tabTitles = {};
 
@@ -14,14 +15,18 @@ function openAbstract(newUrl) {
 }
 
 
-function isPdf(url) {
-  if (url.startsWith("http") && !url.endsWith(".pdf")) {
-    if (url.includes("openreview.net/pdf?id=")) {
-      return true;
-    }
-    return false;
-  }
-  return true;
+function isTargetPdf(url) {
+  if (url.startsWith("http"))
+    if (url.endsWith(".pdf"))
+      if (url.includes("arxiv.org/pdf/")) return true;
+      else if (url.includes("aclanthology.org/")) return true;
+      else if (url.includes("openaccess.thecvf.com/content/")) return true;
+      else if (url.includes("proceedings.mlr.press")) return true;
+      else if (url.includes("papers.nips.cc/paper_files")) return true;
+      else return false;
+    else if (url.includes("openreview.net/pdf?id=")) return true;
+    else return false;
+  return false;
 }
 
 
@@ -31,19 +36,27 @@ chrome.runtime.onInstalled.addListener(() => {
 
 // Listen for any changes to the URL of any tab.
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (isPdf(tab.url)) {
+  if (isTargetPdf(tab.url)) {
     chrome.action.enable(tabId);
     if (changeInfo.status === 'complete'){
       chrome.tabs.sendMessage(tabId, {tab: tab, message: 'complete'});
     }
 
     // console.log(tabId, 'changeInfo', changeInfo);
+    // console.log(tab.url)
+    // console.log(tabTitles)
     if (tabTitles[tab.id] !== undefined && changeInfo.title !== undefined){
-      if (changeInfo.title !== tabTitles[tab.id] && changeInfo.title !== tab.url) {
-        // For PDF page in Chrome, changing the tab title will result in
-        // a intermediate title that is the tab's url.
-        // Hence, we ignore the change that is the same as the tab's url.
-        console.log(tabId, 'changeInfo before changeTitle', changeInfo);
+      // For PDF page in Chrome, changing the tab title will result in
+      // a intermediate title that is the tab's url (with the protocol).
+      var eqUrl = changeInfo.title === tab.url;
+      if (!eqUrl) {
+        // For the chrome 114+, it is the tab's url without the protocol.
+        eqUrl = changeInfo.title === tab.url.replace(/^(http:\/\/|https:\/\/)/, "");
+      }
+
+      // Hence, we ignore the change that is the same as the tab's url.
+      if (changeInfo.title !== tabTitles[tab.id] && !eqUrl) {
+        console.log(exName, tabId, 'changeInfo before changeTitle', changeInfo);
         chrome.tabs.sendMessage(tabId, {tab: tab, message: 'changeTitle'});
         }
     }
@@ -56,7 +69,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 // Save the loaded paper title to the `tabTitles` object.
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.message === 'titleLoaded') {
-    console.log('title loaded', request);
+    console.log(exName, 'title loaded', request);
     tabTitles[sender.tab.id] = request.title;
     chrome.tabs.sendMessage(sender.tab.id, {tab: sender.tab, message: 'changeTitle'});
   }
@@ -65,7 +78,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 // Remove the saved title when the tab is closed.
 chrome.tabs.onRemoved.addListener((tabId, removeInfo) => {
-  if (isPdf(tab.url)) delete tabTitles[tabId];
+  if (isTargetPdf(tab.url)) delete tabTitles[tabId];
 });
 
 
