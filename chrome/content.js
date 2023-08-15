@@ -115,8 +115,7 @@ function getTitle() {
     fetch(url.replace(".pdf", "")).then((response) => response.text())
       .then((text) => {
         let doc = parser.parseFromString(text, "text/html");
-        paperTitle =  doc.getElementById("title").getElementsByTagName('a')[0].innerHTML;
-        paperTitle =  paperTitle.replace(/<\/?span[^>]*>/g, '');
+        paperTitle =  doc.getElementById("title").getElementsByTagName('a')[0].innerText;
         console.log(exName, "get title:", paperTitle);
         chrome.runtime.sendMessage({message: "titleLoaded", title: paperTitle});
       })
