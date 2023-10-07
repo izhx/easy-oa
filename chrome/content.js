@@ -74,7 +74,8 @@ function getTitle() {
   }
 
   if (url.includes("arxiv.org/pdf/")) {
-    fetch(url.replace(".pdf", "").replace("arxiv.org/pdf/", "export.arxiv.org/api/query?id_list="))
+    fetch(url.replace(".pdf", "").replace("browse.", "")
+        .replace("arxiv.org/pdf/", "export.arxiv.org/api/query?id_list="))
       .then((response) => response.text())
       .then((text) => {
         let doc = parser.parseFromString(text, "text/xml");
