@@ -90,6 +90,8 @@ chrome.action.onClicked.addListener(async (tab) => {
   if (!url.endsWith(".pdf")) {
     if (url.includes("openreview.net/pdf?id=")) {
       openAbstract(url.replace("net/pdf?", "net/forum?"));
+    } else if (url.includes("dl.acm.org/doi/pdf/")) {
+      openAbstract(url.replace("/pdf/", "/"))
     }
 
     return;

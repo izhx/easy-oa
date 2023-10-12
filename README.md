@@ -32,6 +32,7 @@ Reading papers every day, I often receive various PDF links, which can be quite 
 - openaccess.thecvf.com
 - proceedings.mlr.press
 - papers.nips.cc
+- dl.acm.org
 
 
 可能的开发计划 / Possible future developments:
